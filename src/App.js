@@ -1,25 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
 
-function App() {
+export default function App() {
+  const [age, setAge] = useState();
+  const [year, setYear] = useState();
+
+  const getAge = (year) => {
+    const currentYear = new Date().getFullYear();
+    let age = parseInt(currentYear) - parseInt(year);
+    setAge(parseInt(age))
+    // return age;
+
+  }
+
+  const handleSubmit = (e) => {
+
+    if (!Number.isInteger(year) || year < 0) {
+      alert("Vui lòng  nhập đúng năm sinh hoặc tuổi")
+
+    } else {
+      getAge(year)
+
+    }
+    e.preventDefault();
+
+  }
+  const onChangeNumber = (e) => {
+
+    setYear(parseInt(e?.target.value))
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{ display: 'flex', justifyContent: 'center', marginTop: '100px' }} >
+      <div>
+        <p style={{ textAlign: 'center' }}>Tính tuổi</p>
+        <form onSubmit={handleSubmit}>
+          <input style={{ padding: '8px', margin: '8px' }} type='text' onChange={onChangeNumber} placeholder='Nhập năm sinh hoặc tuổi' required />
+          <button style={{ padding: '8px', margin: '8px', backgroundColor: 'green' }} type='submit' >Tính</button>
+        </form>
+        <div>
+          {age >= 0 && age < 150 ? <p style={{ textAlign: 'center' }}>Tuổi của bạn là : {age?.toFixed(0)}</p> : age >= 1900 && age >= 0 ? <p style={{ textAlign: 'center' }}>Năm sinh bạn là : {age?.toFixed(0)}</p> : null}
+
+        </div>
+      </div>
     </div>
   );
 }
 
-export default App;
