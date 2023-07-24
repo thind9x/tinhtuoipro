@@ -124,7 +124,7 @@ export default function App() {
         <p style={{fontSize:'13px',textAlign:'center'}}>{getMessage(`This website make just for fun, for more information please visit:`)}</p>
         <div style={{display:'flex',justifyContent:'center',marginTop:'20px'}}>
            <div>
-           <a target="_blank" href="https://github.com/devquen2023/tinhtuoipro.git" rel="noreferrer">Github</a> 
+           <a target="_blank" href="https://github.com/devquen2023/tinhtuoipro" rel="noreferrer">Github</a> 
            </div>
         </div>
          <div className="copyright" style={{fontSize:'10px',textAlign:'center',display:'none'}}>
