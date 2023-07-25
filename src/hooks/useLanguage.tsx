@@ -34,13 +34,10 @@ const useLanguage = () => {
   const memoizedEnglishMessages = useMemo(() => englishMessages, []);
 
 
-  const memoizedGetMessage = useCallback(
-    (message: string) => {
-      return isVietNam === "vie" ? memoizedVietnameseMessages[message] || message : memoizedEnglishMessages[message] || message;
-    },
-    [isVietNam, memoizedVietnameseMessages, memoizedEnglishMessages],
-  );
 
+  const memoizedGetMessage = (message: string): string => {
+    return handleLanguage?.vie === true ? vietnameseMessages[message] || message : englishMessages[message] || message;
+  };
   const onChangeLang = (e: any) => {
     setVietNam(e.target.value);
   };
