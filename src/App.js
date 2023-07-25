@@ -69,7 +69,7 @@ export default function App() {
     "No one can have an age or birth year like that.": "Không ai có thể có tuổi thọ hoặc năm sinh như vậy.",
     "Please enter a positive integer.": "Vui lòng nhập số nguyên dương.",
     "Your age is": "Tuổi của bạn là",
-    "Your birth year is": "Năm sinh của bạn",
+    "Your birth year is": "Năm sinh của bạn là",
     "Enter your birthday or age":"Nhập năm sinh hoặc tuổi",
     "Calculate age":"Tính tuổi",
     "Calculate":"Tính",
