@@ -36,7 +36,7 @@ const useLanguage = () => {
 
 
   const memoizedGetMessage = (message: string): string => {
-    return handleLanguage?.vie === true ? vietnameseMessages[message] || message : englishMessages[message] || message;
+    return  isVietNam === "vie" ? vietnameseMessages[message] || message : englishMessages[message] || message;
   };
   const onChangeLang = (e: any) => {
     setVietNam(e.target.value);
