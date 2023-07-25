@@ -27,7 +27,7 @@ export default function App() {
 
           <p style={{ color: "red", fontSize: '14px', textAlign: 'center' }}>{memoizedGetMessage(errorMsg)}</p>
         <div>
-          {age >= 0 && age < 150 && age !== null ? (
+          {age >= 0 && age < 115 && age !== null ? (
             <p style={{ textAlign: 'center', fontSize: '14px' }}>
               {memoizedGetMessage("Your age is")} {age?.toFixed(0)}
             </p>
