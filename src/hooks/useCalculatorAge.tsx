@@ -33,7 +33,7 @@ const calculateAgeFromYear = (year: number) => {
           return false;
         }
   
-        if (birthYear > 113 && birthYear < 1910) {
+        if (birthYear > 114 && birthYear <= 1910) {
           setErrorMsg("No one can have an age or birth year like that.");
           setAge(null);
           e.preventDefault();
