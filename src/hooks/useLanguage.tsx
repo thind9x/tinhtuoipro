@@ -14,6 +14,7 @@ const useLanguage = () => {
         "Enter your birthday or age":"Enter your birthday or age",
         "Calculate age":"Calculate age",
         "Calculate":"Calculate",
+        "Year of birth should not be less than 1909":"Year of birth should not be less than 1909",
         "This website make just for fun, for more information please visit:":"This website make just for fun, for more information please visit:"
       };
     
@@ -29,6 +30,7 @@ const useLanguage = () => {
         "Enter your birthday or age":"Nhập năm sinh hoặc tuổi",
         "Calculate age":"Tính tuổi",
         "Calculate":"Tính",
+        "Year of birth should not be less than 1909":"Năm sinh không được nhỏ hơn 1909",
         "This website make just for fun, for more information please visit:":"Trang web này chỉ làm cho vui, để biết thêm thông tin vui lòng truy cập:",
         "Please enter your  birth year or age":"Vui lòng nhập năm sinh hoặc tuổi của bạn"
       };
