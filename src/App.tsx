@@ -4,7 +4,7 @@ export default function App() {
  
   const {memoizedGetMessage,isVietNam,onChangeLang,} = useLanguage()
   const {age,errorMsg,handleInputChange,memoizedHandleSubmit,onChangeToRealAge,isRealAge} = useCalculatorAge();
-  console.log(isRealAge)
+  
   
   return (
     <div style={{ marginTop: '100px' }}>
@@ -40,8 +40,8 @@ export default function App() {
         </div>
        
         <div onChange={onChangeLang} style={{display:'flex',margin:'auto', justifyContent:'center'}}>
-          <input type="radio" value="vie" name="lang" checked={isVietNam === "vie"} /> Vietnamese
-          <input type="radio" value="eng" name="lang" checked={isVietNam === "eng"} /> English
+          <input type="radio" value="vie" name="lang" checked={isVietNam === "vie"} /> {memoizedGetMessage("Vietnamese")}
+          <input type="radio" value="eng" name="lang" checked={isVietNam === "eng"} /> {memoizedGetMessage("English")}
         </div>
        
         <p style={{fontSize:'13px',textAlign:'center'}}>{memoizedGetMessage(`This website make just for fun, for more information please visit:`)}</p>
