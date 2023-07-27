@@ -105,7 +105,7 @@ const useCalculatorAge = () => {
   const handleInputChange = useCallback((e: any) => {
     const inputValue = e?.target.value;
     
-    if (/^\d*$/.test(inputValue)) {
+    if (/^\d*$/.test(inputValue)&& inputValue > 0) {
      setBirthYear(parseInt(inputValue));
     setErrorMsg("");
     }else{
