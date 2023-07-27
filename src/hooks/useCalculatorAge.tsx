@@ -104,11 +104,13 @@ const useCalculatorAge = () => {
 
   const handleInputChange = useCallback((e: any) => {
     const inputValue = e?.target.value;
-    setBirthYear(inputValue)
-    // if (/^\d*$/.test(inputValue)) {
-    //   setBirthYear(parseInt(inputValue));
-    //   setErrorMsg("");
-    // } 
+    
+    if (/^\d*$/.test(inputValue)) {
+     setBirthYear(parseInt(inputValue));
+    setErrorMsg("");
+    }else{
+    setErrorMsg("Vui lòg nhập số nguyên dương");
+    } 
   }, [])
 
   const onChangeToRealAge = (e) => {
