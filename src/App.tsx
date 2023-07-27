@@ -21,7 +21,7 @@ export default function App() {
               placeholder={memoizedGetMessage("Enter your birthday or age")}
             />:<input
             style={{ padding: '8px', margin: '8px' }}
-            type={ "text"}
+            type={ "number"}
             defaultValue={age}
             onChange={handleInputChange}
             pattern="[0-9]*"
