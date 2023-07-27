@@ -1,8 +1,10 @@
+import "./App.css"
 import {useLanguage,useCalculatorAge} from "./hooks"
 export default function App() {
  
-  const {memoizedGetMessage,isVietNam,onChangeLang} = useLanguage()
-  const {age,errorMsg,handleInputChange,memoizedHandleSubmit} = useCalculatorAge();
+  const {memoizedGetMessage,isVietNam,onChangeLang,} = useLanguage()
+  const {age,errorMsg,handleInputChange,memoizedHandleSubmit,onChangeToRealAge,isRealAge} = useCalculatorAge();
+  console.log(isRealAge)
   
   return (
     <div style={{ marginTop: '100px' }}>
@@ -12,11 +14,10 @@ export default function App() {
         <form onSubmit={memoizedHandleSubmit}>
           <input
             style={{ padding: '8px', margin: '8px' }}
-            type='text'
+            type={"number"}
             onChange={handleInputChange}
             pattern="[0-9]*"
-            placeholder={memoizedGetMessage("Enter your birthday or age")}
-            required
+            placeholder={memoizedGetMessage(isRealAge?"Enter your date birthday":"Enter your birthday or age")}
           />
           <button style={{ padding: '8px', margin: '8px', backgroundColor: 'green' }} type='submit'>
             {memoizedGetMessage('Calculate')}
@@ -37,10 +38,12 @@ export default function App() {
             </p>
           ) : null}
         </div>
+       
         <div onChange={onChangeLang} style={{display:'flex',margin:'auto', justifyContent:'center'}}>
           <input type="radio" value="vie" name="lang" checked={isVietNam === "vie"} /> Vietnamese
           <input type="radio" value="eng" name="lang" checked={isVietNam === "eng"} /> English
         </div>
+       
         <p style={{fontSize:'13px',textAlign:'center'}}>{memoizedGetMessage(`This website make just for fun, for more information please visit:`)}</p>
         <div style={{display:'flex',justifyContent:'center',marginTop:'20px'}}>
            <div>
