@@ -3,6 +3,8 @@ import { useState, useMemo, useCallback } from "react";
 const useLanguage = () => {
   const [isVietNam, setVietNam] = useState("vie");
     const englishMessages = {
+       "English":"English",
+       "Vietnamese":"Vietnamese",
         "Please enter a valid birth year or age.": "Please enter a valid birth year or age.",
         "Birth year cannot be greater than the current year.": "Birth year cannot be greater than the current year.",
         "No one can have an age like that.": "No one can have an age like that.",
@@ -16,6 +18,8 @@ const useLanguage = () => {
       };
     
       const vietnameseMessages = {
+        "English":"Tiếng anh",
+       "Vietnamese":"Tiếng việt",
         "Please enter a valid birth year or age.": "Vui lòng nhập năm sinh hoặc tuổi hợp lệ .",
         "Birth year cannot be greater than the current year.": "Năm sinh không thể lớn hơn năm hiện tại.",
         "No one can have an age like that.": "Không ai có thể có tuổi thọ như vậy.",
