@@ -46,9 +46,9 @@ export default function App() {
           </p>
         ) : null}
       </div>
-      <div style={{ display: 'flex', margin: 'auto', justifyContent: 'center' }}>
+      {/* <div style={{ display: 'flex', margin: 'auto', justifyContent: 'center' }}>
         <input type="checkbox" disabled onChange={onChangeToRealAge} name="lang" defaultChecked={isRealAge} /> {isRealAge === false ? "Tính tuổi chính xác đang tắt" : "Tính tuổi chính xác đang bật"}
-      </div>
+      </div> */}
       <div onChange={onChangeLang} style={{ display: 'flex', margin: 'auto', justifyContent: 'center' }}>
         <input type="radio" value="vie" name="lang" checked={isVietNam === "vie"} /> {memoizedGetMessage("Vietnamese")}
         <input type="radio" value="eng" name="lang" checked={isVietNam === "eng"} /> {memoizedGetMessage("English")}
