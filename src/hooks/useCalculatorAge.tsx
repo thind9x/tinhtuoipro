@@ -67,15 +67,15 @@ const useCalculatorAge = () => {
       setErrorMsg("");
       setAge(memoizedCalculateAgeFromYear(birthYear));
     }else{
-      const currentDateInput = new Date();
+      const currentDate = new Date();
 
       const birthYearFormat = startDate.getFullYear();
       const birthMonth = startDate.getMonth() + 1; 
       const birthDay = startDate.getDate();
 
-      const currentYear = currentDateInput.getFullYear();
-      const currentMonth = currentDateInput.getMonth() + 1;
-      const currentDay = currentDateInput.getDate();
+      const currentYear = currentDate.getFullYear();
+      const currentMonth = currentDate.getMonth() + 1;
+      const currentDay = currentDate.getDate();
       let ageReal = currentYear - birthYearFormat;
       if (currentMonth < birthMonth || (currentMonth === birthMonth && currentDay < birthDay)) {
         ageReal--; 
