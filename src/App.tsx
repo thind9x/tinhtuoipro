@@ -16,12 +16,19 @@
 
 
 
+import React, { useState } from "react";
 import "./App.css";
 import { useCalculatorAge, useLanguage } from "./hooks";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
+
 export default function App() {
 
   const { memoizedGetMessage, isVietNam, onChangeLang, } = useLanguage()
-  const { age, errorMsg, handleInputChange, memoizedHandleSubmit, isRealAge } = useCalculatorAge();
+  const { age, errorMsg, handleInputChange, memoizedHandleSubmit, isRealAge, onChangeToRealAge, onChangeDate, startDate } = useCalculatorAge();
+
+
 
   return (
     <div style={{ marginTop: '100px' }}>
@@ -29,21 +36,21 @@ export default function App() {
         <div>
           <p style={{ textAlign: 'center' }}>{memoizedGetMessage("Calculate age")}</p>
           <form onSubmit={memoizedHandleSubmit}>
-            {isRealAge?<input
+            {isRealAge ? <React.Fragment>
+              <p style={{fontSize:"13px"}}>{memoizedGetMessage(`Enter your birthday with format: dd/mm/yyyy`)}</p>
+              <DatePicker
+              dateFormat="dd/MM/yyyy"
+            
+              selected={startDate}
+              onChange={(date) => { onChangeDate(date) }}
+            /> 
+            </React.Fragment>: <input
               style={{ padding: '8px', margin: '8px' }}
-              type={ "date"}
-              defaultValue={age}
+              type={"number"}
               onChange={handleInputChange}
               pattern="[0-9]*"
               placeholder={memoizedGetMessage("Enter your birthday or age")}
-            />:<input
-            style={{ padding: '8px', margin: '8px' }}
-            type={ "number"}
-            defaultValue={age}
-            onChange={handleInputChange}
-            pattern="[0-9]*"
-            placeholder={memoizedGetMessage("Enter your birthday or age")}
-          />}
+            />}
             <button style={{ padding: '8px', margin: '8px', backgroundColor: 'green' }} type='submit'>
               {memoizedGetMessage('Calculate')}
             </button>
@@ -63,13 +70,14 @@ export default function App() {
           </p>
         ) : null}
       </div>
-      {/* <div style={{ display: 'flex', margin: 'auto', justifyContent: 'center' }}>
-        <input type="checkbox" disabled onChange={onChangeToRealAge} name="lang" defaultChecked={isRealAge} /> {isRealAge === false ? "Tính tuổi chính xác đang tắt" : "Tính tuổi chính xác đang bật"}
-      </div> */}
+      <div style={{ display: 'flex', margin: 'auto', justifyContent: 'center' }}>
+        <input type="checkbox" onChange={onChangeToRealAge} name="lang" defaultChecked={isRealAge} /> <span style={{fontSize:"14px"}}>{isRealAge === false ? `${memoizedGetMessage(`Accurate age calculation is off`)}` : `${memoizedGetMessage(`Accurate age calculation is on`)}`}</span>
+      </div>
       <div onChange={onChangeLang} style={{ display: 'flex', margin: 'auto', justifyContent: 'center' }}>
         <input type="radio" value="vie" name="lang" checked={isVietNam === "vie"} /> {memoizedGetMessage("Vietnamese")}
         <input type="radio" value="eng" name="lang" checked={isVietNam === "eng"} /> {memoizedGetMessage("English")}
       </div>
+      <p style={{ fontSize: '13px', textAlign: 'center' }}>{memoizedGetMessage(`This page only supports human age calculation, does not support natural or antique age calculation`)}</p>
 
       <p style={{ fontSize: '13px', textAlign: 'center' }}>{memoizedGetMessage(`This website make just for fun, for more information please visit:`)}</p>
       <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>

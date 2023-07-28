@@ -23,6 +23,7 @@ const useCalculatorAge = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const { memoizedGetMessage } = useLanguage();
   const [isRealAge, setisRealAge] = useState<boolean>(false);
+  const [startDate, setStartDate] = useState(new Date());
 
   const calculateAgeFromYear = (year: number) => {
     const currentYear = new Date().getFullYear();
@@ -45,31 +46,75 @@ const useCalculatorAge = () => {
 
   const memoizedHandleSubmit = useCallback( async (e: any) => {
     e.preventDefault();
-    const currentYear = new Date().getFullYear();
+    if(isRealAge === false){
+      const currentYear = new Date().getFullYear();
 
-    if (!Number.isInteger(birthYear)) {
-      setErrorMsg("Please enter a valid birth year or age.");
-      return;
+      if (!Number.isInteger(birthYear)) {
+        setErrorMsg("Please enter a valid birth year or age.");
+        return;
+      }
+  
+      if (birthYear > currentYear) {
+        setErrorMsg("Birth year cannot be greater than the current year.");
+        return;
+      }
+  
+      if (birthYear > 114 && birthYear <= 1908) {
+        setErrorMsg("No one can have an age like that.");
+        return;
+      }
+  
+      setErrorMsg("");
+      setAge(memoizedCalculateAgeFromYear(birthYear));
+    }else{
+      const currentDateInput = new Date();
+
+      const birthYearFormat = startDate.getFullYear();
+      const birthMonth = startDate.getMonth() + 1; 
+      const birthDay = startDate.getDate();
+
+      const currentYear = currentDateInput.getFullYear();
+      const currentMonth = currentDateInput.getMonth() + 1;
+      const currentDay = currentDateInput.getDate();
+      let ageReal = currentYear - birthYearFormat;
+      if (currentMonth < birthMonth || (currentMonth === birthMonth && currentDay < birthDay)) {
+        ageReal--; 
+      }
+    
+
+      if (birthYearFormat > currentYear) {
+        setErrorMsg("Birth year cannot be greater than the current year.");
+        setAge(null);
+        e.preventDefault();
+        return false
+      }
+      if (birthYearFormat < 1909) {
+        setErrorMsg("Year of birth should not be less than 1909")
+        setAge(null);
+        e.preventDefault();
+        return false
+      }
+      else {
+    
+        setAge(ageReal)
+        setErrorMsg("");
+        e.preventDefault();
+        return true
+      }
+
     }
-
-    if (birthYear > currentYear) {
-      setErrorMsg("Birth year cannot be greater than the current year.");
-      return;
-    }
-
-    if (birthYear > 114 && birthYear <= 1908) {
-      setErrorMsg("No one can have an age like that.");
-      return;
-    }
-
-    setErrorMsg("");
-    setAge(memoizedCalculateAgeFromYear(birthYear));
-  }, [birthYear, memoizedCalculateAgeFromYear]);
+  }, [birthYear, isRealAge, memoizedCalculateAgeFromYear, startDate]);
 
   const onChangeToRealAge = (e) => {
     setisRealAge(!isRealAge);
+    setAge(null)
   };
+ 
+  const onChangeDate = (date:any) =>{
 
+    setStartDate(date)
+
+  }
   return {
     handleInputChange,
     memoizedHandleSubmit,
@@ -77,6 +122,8 @@ const useCalculatorAge = () => {
     age,
     onChangeToRealAge,
     isRealAge,
+    onChangeDate,
+    startDate
   };
 };
 

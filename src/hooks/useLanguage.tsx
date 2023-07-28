@@ -31,7 +31,11 @@ const useLanguage = () => {
         "Your birth year is": "Your birth year is",
         "Enter your birthday or age":"Enter your birthday or age",
         "Calculate age":"Calculate age",
+        "Enter your birthday with format: dd/mm/yyyy" :"Enter your birthday with format: dd/mm/yyyy",
         "Calculate":"Calculate",
+        "Accurate age calculation is on":"Accurate age calculation is on",
+        "Accurate age calculation is off":"Accurate age calculation is off",
+        "This page only supports human age calculation, does not support natural or antique age calculation":"This page only supports human age calculation, does not support natural or antique age calculation",
         "Year of birth should not be less than 1909":"Year of birth should not be less than 1909",
         "This website make just for fun, for more information please visit:":"This website make just for fun, for more information please visit:"
       };
@@ -47,7 +51,11 @@ const useLanguage = () => {
         "Your birth year is": "Năm sinh của bạn là",
         "Enter your birthday or age":"Nhập năm sinh hoặc tuổi",
         "Calculate age":"Tính tuổi",
+        "Enter your birthday with format: dd/mm/yyyy" :"Nhập ngày sinh của bạn với định dạng: dd/mm/yyyy",
         "Calculate":"Tính",
+        "Accurate age calculation is on":"Tính tuổi chính xác đang bật",
+        "Accurate age calculation is off":"Tính tuổi chính xác đang tắt",
+        "This page only supports human age calculation, does not support natural or antique age calculation":"Trang này chỉ hỗ trợ tính tuổi của con người, không hỗ trợ tính tuổi các loài thiên nhiên hay đồ cổ",
         "Year of birth should not be less than 1909":"Năm sinh không được nhỏ hơn 1909",
         "This website make just for fun, for more information please visit:":"Trang web này chỉ làm cho vui, để biết thêm thông tin vui lòng truy cập:",
         "Please enter your  birth year or age":"Vui lòng nhập năm sinh hoặc tuổi của bạn"

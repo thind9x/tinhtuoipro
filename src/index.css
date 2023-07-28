@@ -11,3 +11,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.react-datepicker-ignore-onclickoutside{
+  padding: 8px;
+  margin: 8px;
+}
+input{
+  padding: 8px;
+  margin: 8px;
+}
