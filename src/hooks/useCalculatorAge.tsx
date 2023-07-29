@@ -108,6 +108,7 @@ const useCalculatorAge = () => {
   const onChangeToRealAge = (e) => {
     setisRealAge(!isRealAge);
     setAge(null)
+   setBirthYear(null)
   };
  
   const onChangeDate = (date:any) =>{
