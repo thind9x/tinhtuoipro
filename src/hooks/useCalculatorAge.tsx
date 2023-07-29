@@ -32,8 +32,20 @@ const useCalculatorAge = () => {
 
   const memoizedCalculateAgeFromYear = useMemo(() => calculateAgeFromYear, []);
 
-  const handleInputChange = useCallback((e: any) => {
-    const inputValue = e?.target.value;
+  // const handleInputChange = useCallback((e: any) => {
+  //   const inputValue = e?.target.value;
+  //   if (/^\d*$/.test(inputValue)) {
+  //     const year = parseInt(inputValue);
+  //     setBirthYear(year);
+  //     setErrorMsg("");
+  //   } else {
+  //     setErrorMsg(memoizedGetMessage("Please enter a positive integer."));
+  //     setAge(undefined);
+  //   }
+  // }, [memoizedGetMessage]);
+
+ const handleInputChange = () => {
+  const inputValue = e?.target.value;
     if (/^\d*$/.test(inputValue)) {
       const year = parseInt(inputValue);
       setBirthYear(year);
@@ -42,7 +54,7 @@ const useCalculatorAge = () => {
       setErrorMsg(memoizedGetMessage("Please enter a positive integer."));
       setAge(undefined);
     }
-  }, [memoizedGetMessage]);
+ }
 
   const memoizedHandleSubmit = useCallback( async (e: any) => {
     e.preventDefault();
